@@ -14,8 +14,6 @@ set NAME_DY_D=libzmq-v142-mt-gd-4_3_4
 
 mkdir %BUILD%
 
-goto runcopy
-
 :build64
 echo.
 echo ******* x64 buiding ...
@@ -48,29 +46,34 @@ cmake --build ./%BUILD%/%WIN32%_debug --clean-first --config Debug
 cmake --install ./%BUILD%/%WIN32%_debug --prefix "%OUTDIR%/%WIN32%_debug" --config Debug
 
 :runcopy
+set TARGET_NAME_ST=libzmq-s
+set TARGET_NAME_ST_D=libzmq-sd
+set TARGET_NAME_DY=libzmq
+set TARGET_NAME_DY_D=libzmqd
+
 REM x64
 set LIBDIR=lib\%X64%
-xcopy %OUTDIR%\%X64%\lib\%NAME_ST%.lib %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%X64%\lib\%NAME_DY%.lib %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%X64%\bin\%NAME_DY%.dll %LIBDIR%\* /Y /F
+xcopy %OUTDIR%\%X64%\lib\%NAME_ST%.lib %LIBDIR%\%TARGET_NAME_ST%.lib* /Y /F
+xcopy %OUTDIR%\%X64%\lib\%NAME_DY%.lib %LIBDIR%\%TARGET_NAME_DY%.lib* /Y /F
+xcopy %OUTDIR%\%X64%\bin\%NAME_DY%.dll %LIBDIR%\%TARGET_NAME_DY%.dll* /Y /F
 
-xcopy %OUTDIR%\%X64%_debug\lib\%NAME_ST_D%.lib %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%X64%_debug\lib\%NAME_DY_D%.lib %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%X64%_debug\bin\%NAME_DY_D%.dll %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%X64%_debug\bin\%NAME_DY_D%.pdb %LIBDIR%\* /Y /F
+xcopy %OUTDIR%\%X64%_debug\lib\%NAME_ST_D%.lib %LIBDIR%\%TARGET_NAME_ST_D%.lib* /Y /F
+xcopy %OUTDIR%\%X64%_debug\lib\%NAME_DY_D%.lib %LIBDIR%\%TARGET_NAME_DY_D%.lib* /Y /F
+xcopy %OUTDIR%\%X64%_debug\bin\%NAME_DY_D%.dll %LIBDIR%\%TARGET_NAME_DY_D%.dll* /Y /F
+xcopy %OUTDIR%\%X64%_debug\bin\%NAME_DY_D%.pdb %LIBDIR%\%TARGET_NAME_DY_D%.pdb* /Y /F
 
 REM win32
 set LIBDIR=lib\%WIN32%
-xcopy %OUTDIR%\%WIN32%\lib\%NAME_ST%.lib %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%WIN32%\lib\%NAME_DY%.lib %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%WIN32%\bin\%NAME_DY%.dll %LIBDIR%\* /Y /F
+xcopy %OUTDIR%\%WIN32%\lib\%NAME_ST%.lib %LIBDIR%\%TARGET_NAME_ST%.lib* /Y /F
+xcopy %OUTDIR%\%WIN32%\lib\%NAME_DY%.lib %LIBDIR%\%TARGET_NAME_DY%.lib* /Y /F
+xcopy %OUTDIR%\%WIN32%\bin\%NAME_DY%.dll %LIBDIR%\%TARGET_NAME_DY%.dll* /Y /F
 
-xcopy %OUTDIR%\%WIN32%_debug\lib\%NAME_ST_D%.lib %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%WIN32%_debug\lib\%NAME_DY_D%.lib %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%WIN32%_debug\bin\%NAME_DY_D%.dll %LIBDIR%\* /Y /F
-xcopy %OUTDIR%\%WIN32%_debug\bin\%NAME_DY_D%.pdb %LIBDIR%\* /Y /F
+xcopy %OUTDIR%\%WIN32%_debug\lib\%NAME_ST_D%.lib %LIBDIR%\%TARGET_NAME_ST_D%.lib* /Y /F
+xcopy %OUTDIR%\%WIN32%_debug\lib\%NAME_DY_D%.lib %LIBDIR%\%TARGET_NAME_DY_D%.lib* /Y /F
+xcopy %OUTDIR%\%WIN32%_debug\bin\%NAME_DY_D%.dll %LIBDIR%\%TARGET_NAME_DY_D%.dll* /Y /F
+xcopy %OUTDIR%\%WIN32%_debug\bin\%NAME_DY_D%.pdb %LIBDIR%\%TARGET_NAME_DY_D%.pdb* /Y /F
 
-rmdir %OUTDIR% /S /Q
+REM rmdir %OUTDIR% /S /Q
 
 :End
 echo done
