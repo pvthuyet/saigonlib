@@ -227,6 +227,16 @@ public:
       }
    }
 
+   ustring address2()
+   {
+       if (m_part_data.size() > 0) {
+           return m_part_data[0];
+       }
+       else {
+           return {};
+       }
+   }
+
    void wrap(const char *address, const char *delim) {
       if (delim) {
          push_front((char*)delim);
@@ -243,6 +253,18 @@ public:
          pop_front();
       }
       return addr;
+   }
+
+   std::string unwrap2() {
+       if (m_part_data.size() == 0) {
+           return NULL;
+       }
+       std::string addr = (char*)pop_front().c_str();
+       ustring data = address2();
+       if (data.size() == 0) {
+           pop_front();
+       }
+       return addr;
    }
 
    void dump() {
