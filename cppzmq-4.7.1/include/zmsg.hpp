@@ -261,7 +261,7 @@ public:
        }
        std::string addr = (char*)pop_front().c_str();
        ustring data = address2();
-       if (data.size() == 0) {
+       if (data.size() == 0 && parts() > 0) {
            pop_front();
        }
        return addr;
