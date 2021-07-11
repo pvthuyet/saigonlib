@@ -123,6 +123,9 @@ if (ZMQPP_BUILD_STATIC)
   endif()
   list( APPEND INSTALL_TARGET_LIST zmqpp-static)
   set( LIB_TO_LINK_TO_EXAMPLES zmqpp-static )
+  if(WIN32)
+  	target_link_libraries(zmqpp-static ws2_32 wsock32 )
+  endif() # WIN32
 endif() # ZMQPP_BUILD_STATIC
 
 # Shared lib
@@ -138,6 +141,9 @@ if (ZMQPP_BUILD_SHARED)
   endif()
   list( APPEND INSTALL_TARGET_LIST zmqpp)
   set( LIB_TO_LINK_TO_EXAMPLES zmqpp )
+  if(WIN32)
+  	target_link_libraries(zmqpp-static ws2_32 wsock32 )
+  endif() # WIN32
 endif() # ZMQPP_BUILD_SHARED
 
 # We need to link zmqpp to ws2_32 on windows for the implementation of winsock2.h
