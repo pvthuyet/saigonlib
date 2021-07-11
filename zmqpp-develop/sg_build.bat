@@ -50,10 +50,10 @@ cmake --build ./%BUILD%/%WIN32%_debug --clean-first --config Debug
 cmake --install ./%BUILD%/%WIN32%_debug --prefix "%OUTDIR%/%WIN32%_debug" --config Debug
 
 :runcopy
-set TARGET_NAME_ST=libzmq-static
-set TARGET_NAME_ST_D=libzmq-staticd
-set TARGET_NAME_DY=libzmq
-set TARGET_NAME_DY_D=libzmqd
+set TARGET_NAME_ST=zmqpp-static
+set TARGET_NAME_ST_D=zmqpp-staticd
+set TARGET_NAME_DY=zmqpp
+set TARGET_NAME_DY_D=zmqppd
 
 REM x64
 set LIBDIR=lib\%X64%
