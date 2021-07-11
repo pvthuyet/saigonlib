@@ -18,8 +18,6 @@ set zmq_lib_dir="..\libzmq-4.3.4\lib"
 
 mkdir %BUILD%
 
-goto :CPY
-
 :build64
 echo.
 echo ******* x64 buiding ...
@@ -83,7 +81,7 @@ REM rmdir %OUTDIR% /S /Q
 
 :CPY
 REM copy header file
-set INCDIR=include
+set INCDIR=include\zmqpp
 set SRC=src\zmqpp
 xcopy %BUILD%\%X64%\zmqpp_export.h %INCDIR%\ /Y /F
 xcopy %SRC%\*.hpp %INCDIR%\ /Y /F
