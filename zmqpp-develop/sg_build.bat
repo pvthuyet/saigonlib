@@ -22,7 +22,7 @@ mkdir %BUILD%
 echo.
 echo ******* x64 buiding ...
 mkdir %BUILD%/%X64%
-cmake -S . -B ./%BUILD%/%X64% -DCMAKE_BUILD_TYPE=Release -Ax64 -DZEROMQ_INCLUDE=%zmq_inc% -DZEROMQ_INCLUDE_DIR=%zmq_inc_dir% -DZEROMQ_LIB_DIR=%zmq_lib_dir%/%X64% -DZEROMQ_LIBRARY_SHARED=libzmq -DZEROMQ_LIBRARY_STATIC=libzmq_static -DZQPP_BUILD_SHARED=1 -DZQPP_BUILD_STATIC=1
+cmake -S . -B ./%BUILD%/%X64% -DCMAKE_BUILD_TYPE=Release -Ax64 -DZEROMQ_INCLUDE=%zmq_inc% -DZEROMQ_INCLUDE_DIR=%zmq_inc_dir% -DZEROMQ_LIB_DIR=%zmq_lib_dir%/%X64% -DZEROMQ_LIBRARY_SHARED=libzmq -DZEROMQ_LIBRARY_STATIC=libzmq-static -DZQPP_BUILD_SHARED=1 -DZQPP_BUILD_STATIC=1
 cmake --build ./%BUILD%/%X64% --clean-first --config Release
 cmake --install ./%BUILD%/%X64% --prefix "%OUTDIR%/%X64%" --config Release
 
@@ -30,7 +30,7 @@ cmake --install ./%BUILD%/%X64% --prefix "%OUTDIR%/%X64%" --config Release
 echo.
 echo ******* x64 debug buiding ...
 mkdir %BUILD%/%X64%_debug
-cmake -S . -B ./%BUILD%/%X64%_debug -DCMAKE_BUILD_TYPE=Debug -Ax64 -DZEROMQ_INCLUDE=%zmq_inc% -DZEROMQ_INCLUDE_DIR=%zmq_inc_dir% -DZEROMQ_LIB_DIR=%zmq_lib_dir%/%X64% -DZEROMQ_LIBRARY_SHARED=libzmqd -DZEROMQ_LIBRARY_STATIC=libzmq_staticd -DZQPP_BUILD_SHARED=1 -DZQPP_BUILD_STATIC=1
+cmake -S . -B ./%BUILD%/%X64%_debug -DCMAKE_BUILD_TYPE=Debug -Ax64 -DZEROMQ_INCLUDE=%zmq_inc% -DZEROMQ_INCLUDE_DIR=%zmq_inc_dir% -DZEROMQ_LIB_DIR=%zmq_lib_dir%/%X64% -DZEROMQ_LIBRARY_SHARED=libzmqd -DZEROMQ_LIBRARY_STATIC=libzmq-staticd -DZQPP_BUILD_SHARED=1 -DZQPP_BUILD_STATIC=1
 cmake --build ./%BUILD%/%X64%_debug --clean-first --config Debug
 cmake --install ./%BUILD%/%X64%_debug --prefix "%OUTDIR%/%X64%_debug" --config Debug
 
@@ -38,14 +38,14 @@ cmake --install ./%BUILD%/%X64%_debug --prefix "%OUTDIR%/%X64%_debug" --config D
 echo.
 echo ******* win32 buiding ...
 mkdir %BUILD%/%WIN32%
-cmake -S . -B ./%BUILD%/%WIN32% -DCMAKE_BUILD_TYPE=Release -AWin32 -DZEROMQ_INCLUDE=%zmq_inc% -DZEROMQ_INCLUDE_DIR=%zmq_inc_dir% -DZEROMQ_LIB_DIR=%zmq_lib_dir%/%WIN32% -DZEROMQ_LIBRARY_SHARED=libzmq -DZEROMQ_LIBRARY_STATIC=libzmq_static -DZQPP_BUILD_SHARED=1 -DZQPP_BUILD_STATIC=1
+cmake -S . -B ./%BUILD%/%WIN32% -DCMAKE_BUILD_TYPE=Release -AWin32 -DZEROMQ_INCLUDE=%zmq_inc% -DZEROMQ_INCLUDE_DIR=%zmq_inc_dir% -DZEROMQ_LIB_DIR=%zmq_lib_dir%/%WIN32% -DZEROMQ_LIBRARY_SHARED=libzmq -DZEROMQ_LIBRARY_STATIC=libzmq-static -DZQPP_BUILD_SHARED=1 -DZQPP_BUILD_STATIC=1
 cmake --build ./%BUILD%/%WIN32% --clean-first --config Release
 cmake --install ./%BUILD%/%WIN32% --prefix "%OUTDIR%/%WIN32%" --config Release
 
 echo.
 echo ******* win32 debug buiding ...
 mkdir %BUILD%/%WIN32%_debug
-cmake -S . -B ./%BUILD%/%WIN32%_debug -DCMAKE_BUILD_TYPE=Debug -AWin32 -DZEROMQ_INCLUDE=%zmq_inc% -DZEROMQ_INCLUDE_DIR=%zmq_inc_dir% -DZEROMQ_LIB_DIR=%zmq_lib_dir%/%WIN32% -DZEROMQ_LIBRARY_SHARED=libzmqd -DZEROMQ_LIBRARY_STATIC=libzmq_staticd -DZQPP_BUILD_SHARED=1 -DZQPP_BUILD_STATIC=1
+cmake -S . -B ./%BUILD%/%WIN32%_debug -DCMAKE_BUILD_TYPE=Debug -AWin32 -DZEROMQ_INCLUDE=%zmq_inc% -DZEROMQ_INCLUDE_DIR=%zmq_inc_dir% -DZEROMQ_LIB_DIR=%zmq_lib_dir%/%WIN32% -DZEROMQ_LIBRARY_SHARED=libzmqd -DZEROMQ_LIBRARY-STATIC=libzmq_staticd -DZQPP_BUILD_SHARED=1 -DZQPP_BUILD_STATIC=1
 cmake --build ./%BUILD%/%WIN32%_debug --clean-first --config Debug
 cmake --install ./%BUILD%/%WIN32%_debug --prefix "%OUTDIR%/%WIN32%_debug" --config Debug
 
