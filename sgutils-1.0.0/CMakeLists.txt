@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # show all warnings
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic")
 
 # Set compiler flags that don't work on Windows
 if(NOT MSVC)
@@ -67,7 +67,7 @@ message(STATUS "SGLIB_LIBRARIES: ${SGLIB_LIBRARIES}")
 ## sgutils library
 set(HEADER_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/sgutils")
 set (SGUTILS_SOURCES
-	"${CMAKE_CURRENT_SOURCE_DIR}/src/json_reader.cpp"
+	"src/sgutils/json_reader.cpp"
 )
 add_library(sgutils 
 	STATIC
@@ -76,6 +76,9 @@ add_library(sgutils
 
 target_include_directories(sgutils PRIVATE ${SGLIB_INCLUDEDIR} ${HEADER_DIR})
 target_link_libraries(sgutils PRIVATE ${SGLIB_LIBRARIES})
+
+## test project
+add_subdirectory("src/tests")
 
 ## Install
 set(INSTALL_TARGETS_LIST "sgutils")
