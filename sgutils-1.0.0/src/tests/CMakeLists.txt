@@ -57,3 +57,6 @@ add_test(
   NAME google_test
   COMMAND $<TARGET_FILE:test_json_reader>
   )
+
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/data/01.json" "${CMAKE_CURRENT_BINARY_DIR}/01.json" COPYONLY)
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/data/02.json" "${CMAKE_CURRENT_BINARY_DIR}/02.json" COPYONLY)
