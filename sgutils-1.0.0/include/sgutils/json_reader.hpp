@@ -4,7 +4,6 @@
 #include <string>
 #include <nlohmann/json.hpp>
 #include <memory>
-#include <optional>
 
 SAIGON_NAMESPACE_BEGIN
 class json_reader
@@ -16,7 +15,7 @@ public:
 	void read(std::string_view path);
 	
 	template<typename T>
-	std::optional<T> get(std::string_view key)
+	T get(std::string_view key)
 	{
 		return data_->at(key.data()).get<T>();
 	}
