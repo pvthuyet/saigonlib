@@ -9,5 +9,9 @@ int main(int argc, char* argv[])
 
 TEST(json_reader, load_json_file)
 {
-	ASSERT_EQ(1, 1);
+	using namespace std::string_literals;
+	sg::json_reader reader{};
+	reader.read("config.json");
+	auto v = reader.get<std::string>("frontend_host");
+	ASSERT_EQ(v, "tcp://*:5555"s);
 }
