@@ -32,6 +32,5 @@ TEST(json_reader, read_not_exist_attribute)
 	using namespace std::string_literals;
 	sg::json_reader reader{};
 	reader.read("01.json");
-	auto v1 = reader.get<std::string>("key is not existed");
-	ASSERT_EQ(v1, std::nullopt);
+	ASSERT_ANY_THROW(reader.get<std::string>("key is not existed"));
 }

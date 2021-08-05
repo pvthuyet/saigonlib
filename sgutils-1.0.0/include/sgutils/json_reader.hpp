@@ -18,12 +18,7 @@ public:
 	template<typename T>
 	std::optional<T> get(std::string_view key)
 	{
-		try {
-			return data_->at(key.data()).get<T>();
-		}
-		catch (std::exception const&) {
-			return std::nullopt;
-		}
+		return data_->at(key.data()).get<T>();
 	}
 };
 
