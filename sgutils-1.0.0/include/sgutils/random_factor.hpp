@@ -4,7 +4,7 @@
 #include <concepts>
 
 SAIGON_NAMESPACE_BEGIN
-class random_number
+class random_factor
 {
 public:
 	template<typename T> requires (std::integral<T> || std::floating_point<T>)
