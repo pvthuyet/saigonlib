@@ -2,6 +2,10 @@
 #include "define.hpp"
 #include <random>
 #include <concepts>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/lexical_cast.hpp>
 
 SAIGON_NAMESPACE_BEGIN
 class random_factor
@@ -35,6 +39,13 @@ public:
 			std::uniform_real_distribution<T> dis(a, b);
 			return dis(gen);
 		}
+	}
+
+	template<typename T> requires(std::same_as<T, std::string> || std::same_as<T, std::wstring>)
+	T ramdom_uuid()
+	{
+		auto uuid = boost::uuids::random_generator()();
+		return boost::lexical_cast<T>(uuid);
 	}
 };
 SAIGON_NAMESPACE_END
