@@ -5,7 +5,7 @@ if "%1"=="clear" (
 )
 set X64=x64
 set WIN32=win32
-set OUTDIR=../protobuf
+set OUTDIR=out_tmp
 
 mkdir %BUILD%
 
@@ -39,6 +39,23 @@ mkdir %BUILD%/%WIN32%_debug
 cmake -S . -B ./%BUILD%/%WIN32%_debug -DCMAKE_BUILD_TYPE=Debug -AWin32
 cmake --build ./%BUILD%/%WIN32%_debug --clean-first --config Debug
 cmake --install ./%BUILD%/%WIN32%_debug --prefix "%OUTDIR%/%WIN32%_debug" --config Debug
+
+:Copy
+set INCLUDEDIR=..\protobuf\include
+xcopy %OUTDIR%\%X64%\include\* %INCLUDEDIR% /Y /F /S /I
+
+set LIBDIR=..\protobuf\lib\%X64%
+set BINDIR=..\protobuf\bin\%X64%
+xcopy %OUTDIR%\%X64%\lib\*.lib %LIBDIR%\* /Y /F
+xcopy %OUTDIR%\%X64%\bin\*.exe %BINDIR%\* /Y /F
+xcopy %OUTDIR%\%X64%_debug\lib\*.lib %LIBDIR%\* /Y /F
+
+REM win32
+set LIBDIR=..\protobuf\lib\%WIN32%
+set BINDIR=..\protobuf\bin\%WIN32%
+xcopy %OUTDIR%\%WIN32%\lib\*.lib %LIBDIR%\* /Y /F
+xcopy %OUTDIR%\%WIN32%\bin\*.exe %BINDIR%\* /Y /F
+xcopy %OUTDIR%\%WIN32%_debug\lib\*.lib %LIBDIR%\* /Y /F
 
 :End
 echo done
